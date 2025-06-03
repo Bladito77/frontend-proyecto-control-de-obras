@@ -15,11 +15,16 @@ export default function Login() {
   // Función para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault(); // Previene el comportamiento predeterminado del formulario
-
+    console.log("Email ingresado:", Email);
+    console.log("Password ingresado:", Password);
     try {
       // Envía una solicitud POST al backend para autenticar al usuario
       //const url = process.env.REACT_APP_API_BACK + "/api/login/";
-      const url = process.env.REACT_APP_API_BACK + "/api/auth/";
+      //const url = process.env.REACT_APP_API_BACK + "/api/auth/";
+      //const url = process.env.REACT_APP_API_BACK + "/api/login/";
+      const url = process.env.REACT_APP_API_BACK + "/api/login/";
+
+
 
 
       console.log(process.env.REACT_APP_API_BACK) 
@@ -30,7 +35,6 @@ export default function Login() {
       const response = await axios.post(url, {
         Email,
         Password,
-        
       });
 
       // Verifica la respuesta del backend
@@ -48,6 +52,7 @@ export default function Login() {
         // Redirige al usuario
         navigate("/inicio");
       } else {
+        
         // Si el backend devuelve un estado diferente, muestra un mensaje de error
         alert("El usuario o la contraseña son incorrectos");
       }
